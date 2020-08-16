@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { localStorageJwtKey } from './app.module';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent {
 
   getNewJWT(jwt: string, expiresIn: number): void {
     this.jwt = jwt;
+    localStorage.setItem(localStorageJwtKey, jwt);
     this.jwtExpiresIn = expiresIn;
     // If we had an old timer clear it
     if (this.jwtExpireTimerId !== undefined) {
