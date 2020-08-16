@@ -72,7 +72,8 @@ export class AppComponent {
 
   getUsers(): void {
     this.http
-      .post('http://localhost:8080/api/users', { jwt: this.jwt })
+      .get('http://localhost:8080/test/users')
+      // .post('http://localhost:8080/api/users', { jwt: this.jwt })
       .toPromise()
       .then((response) => {
         const resp = response as { users?: []; jwt: string; expiresIn: number };
